@@ -1,7 +1,8 @@
 # Doc
+
 ##Teams
-  1. Uğur - 
-  2. Kevser - 
+  1. Uğur - 1,2,3,4,9,10,11
+  2. Kevser - 5,6,7,8,12
 
 ##Todo
 * register from
