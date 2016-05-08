@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <title>HackerSpace</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+  <!--Navbar-->
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" id="search" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="javascript:;" data-toggle="modal" data-target="#my2Modal"><button type="button" id="login"class="btn btn-primary">Login</button></a></li>
+            <li><a href="javascript:;" data-toggle="modal" data-target="#my2Modal"><button type="button" id="register"class="btn btn-primary" >Register</button></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+      
+    <!-- Modal -->
+    <div class="modal fade" id="my2Modal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="register">
+              <form action="" class="register_form">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Name</label>
+                  <input type="name" class="form-control" id="exampleInputEmail1" placeholder="Name">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Surname</label>
+                  <input type="surname" class="form-control" id="exampleInputEmail1" placeholder="Surname">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Check me out
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-default">Register</button>
+              </form>
+            </div>
+              <div class="login">
+                <form action="" class="login_form">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox"> Check me out
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-default">Login</button>
+                </form>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="panel">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="content show-tooltip">
+          <div class="pull-right">
+            <a href="javascript:;" id="close">X</a>
+          </div>
+          <label>Language</label>
+          <hr>
+        <div class="content show-tooltip">
+          <a href="www.google.com">Filter1</a>
+        </div>
+        <div class="content show-tooltip">
+          <a href="www.google.com">Filter1</a>
+        </div>
+        <div class="content show-tooltip">
+          <a href="www.google.com">Filter1</a>
+        </div>
+        <div class="content show-tooltip">
+          <a href="www.google.com">Filter1</a>
+        </div>
+      </div> 
+      <hr>
+
+       <div class="content show-tooltip">
+            <label>Author</label>
+            <hr>
+          <div class="content show-tooltip">
+            <a href="www.google.com">Filter1</a>
+          </div>
+         <div class="content show-tooltip">
+            <a href="www.google.com">Filter2</a>
+          </div>
+          <div class="content show-tooltip">
+            <a href="www.google.com">Filter3</a>
+          </div>
+          <div class="content show-tooltip">
+            <a href="www.google.com">Filter4</a>
+          </div>
+        </div>
+        <hr>
+
+    <div class="content show-tooltip">
+        <label>Tag</label>
+        <hr>
+      <div class="content show-tooltip">
+        <a href="www.google.com">Filter1</a>
+      </div>
+      <div class="content show-tooltip">
+        <a href="www.google.com">Filter2</a>
+      </div>
+      <div class="content show-tooltip">
+        <a href="www.google.com">Filter3</a>
+      </div>
+      <div class="content show-tooltip">
+        <a href="www.google.com">Filter4</a>
+      </div>
+    </div>
+  </div>
+
+    <div class="col-md-10">
+      <div>
+        <label>
+            <h4 style="color:#1C1C1C">Search Results1 </h4>
+            <h4 style="color:#1C1C1C">Explanation1</h4>
+            <h4 style="color:#1C1C1C">Language1</h4>
+            <h4 style="color:#1C1C1C">Tag1</h4>
+            <a href="#" class="btn btn-primary">Read!</a>
+        </label>
+      </div>
+      <hr>
+      <div>
+         <label>  
+            <h4 style="color:#1C1C1C">Search Results2 </h4>
+            <h4 style="color:#1C1C1C">Explanation2</h4>
+            <h4 style="color:#1C1C1C">Language2</h4>
+            <h4 style="color:#1C1C1C">Tag2</h4>
+            <a href="#" class="btn btn-primary">Read!</a>
+          </label>
+      </div>
+      <hr>
+      <div>
+          <label>
+            <h4 style="color:#1C1C1C">Search Results3 </h4>
+            <h4 style="color:#1C1C1C">Explanation3</h5>
+            <h4 style="color:#1C1C1C">Language3</h4>
+            <h4 style="color:#1C1C1C">Tag3</h4>
+            <a href="#" class="btn btn-primary">Read!</a>
+          </label>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="js/bootstrap.min.js">
+<script>
+$(document).ready(function(){
+
+    $("#login").click(function(){
+        $(".register_form").hide();
+        $(".login_form").show();
+    });  
+});
+
+$(document).ready(function(){
+  $("#register").click(function(){
+        $(".login_form").hide();
+        $(".register_form").show();
+    });
+});
+
+$(document).ready(function(){
+    $(".col-md-2").hide();
+    $(".col-md-10").addClass("col-md-12");
+    $("#search").click(function(){
+      $(".col-md-2").show();
+      $(".col-md-12").addClass("col-md-10");
+  })
+    $("#close").click(function(){
+      $(".col-md-2").hide();
+      $(".col-md-10").addClass("col-md-12");
+  })
+
+});
+
+</script>
+
+</body>
+</html>
