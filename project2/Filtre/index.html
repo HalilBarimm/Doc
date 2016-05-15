@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+	<meta charset="UTF-8">
+	<title>TodoList</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css">
+	<style>
+		
+		.panel-body
+		{
+			display: none;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		 <nav class="navbar navbar-inverse">
+	      <div class="container-fluid">
+	        <div class="navbar-header">     
+	        </div>
+	        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+	          
+	          <ul class="nav navbar-nav navbar-right">
+	           <form class="navbar-form navbar-left" role="search">
+	            <div class="form-group">
+	              <input type="text" class="form-control" id="search" placeholder="Search">
+	            </div>
+	          </form>
+	          </ul>
+	        </div>
+	      </div>
+	    </nav>
+
+
+	    <div class="row">
+	      <div class="col-md-2" >
+	        <div class="filter show-tooltip">
+	          <div class="pull-right">
+	            <a href="javascript:;" id="close">X</a>
+	          </div>
+	          <label>Language</label>
+	          <hr>
+	          <div class="filter show-tooltip">
+	            <div class="checkbox">
+	            	<label>
+	            		<input type="checkbox" class="filter_language" data-language="php">
+	            		Php
+	            	</label>
+	            </div>
+	          </div>
+	          <div class="filter show-tooltip">
+	            <div class="checkbox">
+	            	<label>
+	            		<input type="checkbox" class="filter_language" data-language="csharp" >
+	            		csharp
+	            	</label>
+	            </div>
+	          </div>
+	          <div class="filter show-tooltip">
+	            <div class="checkbox">
+	            	<label>
+	            		<input type="checkbox" class="filter_language" data-language="javascript">
+	            		Javascript
+	            	</label>
+	            </div>
+	          </div>
+	          </div> 
+	          <hr>
+
+	      
+		
+	    <div class="filter show-tooltip">
+	        <label>Tag</label>
+	        <hr>
+	            <div class="filter show-tooltip">
+		                <div class="checkbox">
+		            	<label>
+		            		<input class="filter_tag" data-tag="echo" type="checkbox">
+		            		echo
+		            	</label>
+		            </div>
+	              </div>
+	              <div class="filter show-tooltip">
+		                <div class="checkbox">
+		            	<label>
+		            		<input class="filter_tag" data-tag="php" type="checkbox">
+		            		php
+		            	</label>
+		            </div>
+	              </div>
+	        </div>
+	      </div>	
+	  <div class="col-md-10">
+	  	<div class="panel-group content">	  
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h1>Title</h1>
+				</div>
+				<div class="panel-body">
+					
+				</div>
+			</div>
+	  </div>
+	  </div>
+
+		<div class="pull-right" >
+			<button type="button" class="btn btn-default" id="add-form-open"><i class="glyphicon glyphicon-plus"></i>Add</button>
+		</div>
+	</div>
+	<script src="jquery.js"></script>
+	<script>
+			var data = JSON.parse(localStorage.getItem("adv.json"));
+			
+			if(data == undefined)
+			{
+				data = [
+					{
+						title:"Post #1",
+						pre_explanation:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
+						code:" echo 1234; ?>",
+						optional_explanation:"All it does post a '1234' to screen ",
+						language:"php",
+						tags:["echo","php"]
+					},
+					{
+						title:"Post #2",
+						pre_explanation:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
+						code:" echo 1234; ?>",
+						optional_explanation:"All it does post a '1234' to screen ",
+						language:"csharp",
+						tags:["echo","php"]
+					},
+					{
+						title:"Post #3",
+						pre_explanation:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod",
+						code:" echo 1234; ?>",
+						optional_explanation:"All it does post a '1234' to screen ",
+						language:"javascript",
+						tags:["echo"]
+					}
+				];
+			}
+			$('.content').html('');	
+			//1..fill data
+			$.each(data, function(index, val) {
+				$('.content').append($('<div class="panel panel-default">'+
+				    		'<div class="panel-heading">'+
+				    			'<h3 class="panel-title">'+val.title+'</h3>'+
+				    		'</div>'+
+				    		'<div class="panel-body">'+
+				    			'<p><b>Short Explanation:</b>'+ val.pre_explanation + '</p>' +
+				    			'<p><b>Code:</b><pre>'+ val.code + '</pre></p>'+
+				    			 '<p><b>Optional Explanation:</b><pre>'+ val.optional_explanation + '</pre></p>' +
+				    			 '<p><b>Language:</b><pre>'+ val.language + '</pre></p>' +
+				    			 '<p><b>Tags</b></p>:'+val.tags+
+				    		'</div>'+	
+				    	'</div>'));
+				});
+			//2.search
+			window.languages = [];
+			window.tags = [];
+			$('.filter_language').on('change',function(){
+				window.languages = [];
+				$.each($('.filter_language:checked'), function(index, val) {
+					window.languages.push($(val).data('language'));
+				});
+				console.log(window.languages);
+				doit();
+			});
+			$('.filter_tag').on('change',function(){
+				window.tags = [];
+				$.each($('.filter_tag:checked'), function(index, val) {
+					window.tags.push($(val).data('tag'));
+				});
+				console.log(window.tags);
+				doit();
+			});
+
+			function doit()
+			{
+				$('.content').html('');	
+
+
+				var content = [];
+
+				$.each(data, function(index, val) {
+
+					
+										
+					console.log(1);
+
+					$.each(window.languages, function(i, v) {
+						 if(val.language == v && content.indexOf(val) < 0)
+						 {
+							content.push(val);
+						 }
+					});
+
+					$.each(window.tags, function(i, v) {
+						 if(val.tags.indexOf(v) > -1 && content.indexOf(val) < 0)
+						 {
+							content.push(val);
+						 }
+					});
+
+					if($('#search').val().length > 0  &&  val.title.contains($('#search').val()))
+					{
+						if(content.indexOf(val) < 0)
+						{
+							content.push(val);
+						}
+
+					}
+
+					
+
+				});
+				console.log(content);
+
+				$.each(content, function(index, val) {
+						$('.content').append($('<div class="panel panel-default">'+
+				    		'<div class="panel-heading">'+
+				    			'<h3 class="panel-title">'+val.title+'</h3>'+
+				    		'</div>'+
+				    		'<div class="panel-body">'+
+				    			'<p><b>Short Explanation:</b>'+ val.pre_explanation + '</p>' +
+				    			'<p><b>Code:</b><pre>'+ val.code + '</pre></p>'+
+				    			 '<p><b>Optional Explanation:</b><pre>'+ val.optional_explanation + '</pre></p>' +
+				    			 '<p><b>Language:</b><pre>'+ val.language + '</pre></p>' +
+				    			 '<p><b>Tags</b></p>:'+val.tags+
+				    		'</div>'+	
+				    	'</div>'));
+				});
+			}
+
+
+			$('#search').on('keyup',function(){
+				
+				doit();
+			});
+
+
+
+
+		    $(".col-md-2").hide();
+		    $(".col-md-10").addClass("col-md-12");
+		    $("#search").click(function(){
+		      $(".col-md-2").show();
+		      $(".col-md-12").addClass("col-md-10");
+		  	})
+		    $("#close").click(function(){
+		      $(".col-md-2").hide();
+		      $(".col-md-10").addClass("col-md-12");
+		  	})
+
+			
+		
+		
+	       $(".content").on('click','.panel-heading',function(){
+	       	  	$(".panel-body").slideUp("slow");
+	       	  	var el = $(this).parent(".panel-default").children(".panel-body");
+       			el.css('display') == 'block' ?  el.slideUp('slow') : el.slideDown('slow')
+
+	      });
+  		
+  		
+  		
+	</script>
+</body>
+</html>
