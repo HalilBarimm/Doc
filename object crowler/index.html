@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+</head>
+<body>
+	
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-offset-4 col-md-4">
+				<textarea name="" id="input" class="form-control" rows="20" required="required"></textarea>
+				<button type="button" class="btn btn-primary" style="float:right;">button</button>
+			</div>
+		</div>
+	</div>
+
+	<ul class="bind"></ul>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var data = $.parseJSON($('#input').val());
+			$('.bind').hide();
+			$('.btn').click(function(){
+				$('.container-fluid').hide();
+				$('.bind').show();
+				var data = $.parseJSON($('#input').val());
+				console.log(data);
+			});
+
+			function bind(data,src) {
+				$.each(data, function(index, val) {
+					if(array_ctrl(val) == 0)//object
+					{
+
+						var el = $('<li class="umut">'+index+'(O) <span class="glyphicon glyphicon-download"></span></li>');
+						src.append(el );
+						var b = $('<ul class="umut_2"></ul>');
+						el.append(b);
+						bind(val,b);
+					}
+					else if(array_ctrl(val) == 1)//array
+					{
+						var el = $('<li class="umut">'+index+'(A) <span class="glyphicon glyphicon-download"></span></li>');
+						src.append(  el );
+						var b = $('<ul class="umut_2"></ul>');
+						el.append(b);
+						bind(val,b);
+					}
+					else
+					{
+						var el = $('<li>'+index+':'+val+'</li>');
+						src.append(  el );
+					}
+				});		
+			}
+
+			function array_ctrl(val) {
+
+				
+					if( Object.prototype.toString.call( val ) === '[object Object]' ) {
+						return 0;
+					}
+					else if( Object.prototype.toString.call( val ) === '[object Array]' ) {
+						return 1;
+					}
+					else
+						return 2;
+			}
+
+			bind(data,$('ul.bind'));
+		});
+			$( document ).ready(function() {
+				    //$(".umut_2").hide();
+					$( ".umut_2" ).on('click',function() {
+					  //$(this).parent(.umut)hide();
+					  alert("Eror 404");
+					});
+
+				});	
+	</script>
+
+
+</body>
+</html>
