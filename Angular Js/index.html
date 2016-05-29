@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title></title>		
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container"  ng-controller="myCtrl">
+
+	<div class="content" ng-if="id == row.id" ng-repeat="row in collection">
+		carousel gelecek
+		<div class="row">
+			<div class="col-lg-12">
+				<b>{{ row.title }}</b>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-6">
+				{{ row.created_at }}
+				<br>
+				{{ row.viewcount }} user viewed page
+			</div>
+			<div class="col-lg-6 text-right">
+				{{ row.price }} $
+ 			</div>
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<div class="col-lg-12">
+				Category: {{ row.category.name}}
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<div class="col-lg-12">
+				{{ row.description}}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				ID:{{ row.user.id}}
+				<br>
+				{{ row.user.created_at }}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				{{ count	}}
+			</div>
+		</div>
+	</div>
+		
+
+
+
+	</div>
+
+	 
+	</div>
+	<script>
+		
+		var app = angular.module('myApp', []);
+
+		 
+		app.controller('myCtrl', function($scope, $http) {
+		    $http({
+		        method : "GET",
+		        url : "http://fedu.eurasmart.com/api/advertisement",
+		    }).then(function (response) {
+		        $scope.collection = response.data;
+		        $scope.umut = window.location.href;
+				$scope.res = $scope.umut.split("#"); 
+				$scope.id = $scope.res[1];
+				angular.forEach($scope)
+				$scope.user_id = 0;
+				$scope.count = 0;
+		    }, function (response) {
+		        $scope.myWelcome = response.statusText;
+		    });
+		    
+		});
+	</script>
+</body>
+</html>
